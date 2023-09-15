@@ -1,19 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import PokemonCollection from "./PokemonCollection";
 import PokemonForm from "./PokemonForm";
 import Search from "./Search";
 import { Container } from "semantic-ui-react";
 
-function PokemonPage() {
+function PokemonPage({pokemon, setPokeCreate, setPokemon}) {
+
+  const [pokeSearch, setPokeSearch] = useState('')
+
+
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
-      <PokemonForm />
+      <PokemonForm setPokeCreate={setPokeCreate} setPokemon={setPokemon} />
       <br />
-      <Search />
+      <Search setPokeSearch={setPokeSearch} />
       <br />
-      <PokemonCollection />
+      <PokemonCollection pokemon={pokemon} pokeSearch={pokeSearch} />
     </Container>
   );
 }
